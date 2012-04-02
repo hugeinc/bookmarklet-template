@@ -13,28 +13,18 @@
       margin: 80px auto !important;
       background: #fff !important;
       position: relative !important;
-      padding: 50px !important;
+      padding: 10px !important;
       text-align: left !important;
       max-height: 300px !important;
-      overflow: auto !important;
-      h1 {
-        font: bold 20px/1 arial !important;
-        color: #000 !important;
-        padding: 0 !important;
-        margin: 0 0 20px 0 !important;
-      }
-      ul {
-        list-style: none !important;
-        padding: 0 !important;
-      }
-      a {
-        font-size: 11px !important;
+      textarea {
+        width: 600px !important;
+        height: 100px !important;
+        outline: none !important;
+        font-size: 22px !important;
         font-weight: bold !important;
-        color: #000 !important;
-        text-decoration: none !important;
-        line-height: 1.7 !important;
+        border:0 !important;
         font-family: arial !important;
-        &:hover { color: #555 !important; }
+        color: #000 !important;
       }
     }
   }

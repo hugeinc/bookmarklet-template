@@ -1,11 +1,12 @@
 <% content_for :head do %>
-  <title>Huge bookmark template</title>
+  <title>Huge bookmarklets</title>
 <% end%>
 
-<h1>Bookmarklet template</h1>
+<h1>Try these bookmarklets:</h1>
 
-<a href="#" id="bookmarklet" style="background: #000; border-radius: 7px; padding: 10px 20px; text-decoration: none; color: #fff; font-size: 10px; font-weight: bold; display: inline-block; margin-top: 20px;">bookmarklet</a>
-
+<a href="#" class="bookmarklet" data-name="bookmarklet">simple template</a>
+<a href="#" class="bookmarklet" data-name="links">links</a>
+<a href="#" class="bookmarklet" data-name="copy">copy</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <%= javascript_include_tag "site" %>
