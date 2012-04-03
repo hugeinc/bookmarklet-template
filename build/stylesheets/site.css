@@ -56,3 +56,14 @@ a {
 
 #main {
   padding: 50px; }
+
+.bookmarklet {
+  background: #000;
+  border-radius: 7px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px; }
