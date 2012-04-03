@@ -360,63 +360,17 @@ o.$LAB=J();
 (function() {
   var serverUrl = document.getElementById("huge_bookmarklet_script").getAttribute("data-serverUrl");
   
-  function createBookmarklet(){
-    // register click on document
-    function selectText(e){
-      e.preventDefault();
-      var $el = $(e.target);
-      var $template = $(htmlTemplate);
-      var $ta=$template.find("textarea");
-      $ta.val($(e.target).text());
-      $("body").append($template);
-      $(document).unbind("click", selectText);
-      $ta.focus().select();
-      setTimeout(function(){
-        $ta.prop("scrollTop", 1000);
-        while($ta.scrollTop()>0) {
-          $ta.css("height", parseInt($ta.css("height"), 10)+10);
-        }
-        if (parseInt($ta.css("height"))>35) $ta.removeClass("center");
-      }, 150);
-      // add the google search functionality
-      $(".googleit").click(function(e){
-        this.href = "http://google.com/search?q="+encodeURIComponent($ta.val());
-        $("#huge-bookmarklet-template-lightbox").trigger("click");
-      });
-      
-    }
-    $(document).unbind("click", selectText);
-    $(document).click(selectText);
+  function burn(){
+    // load css
+    $("head").append($("<link>").attr("rel", "stylesheet").attr("href",serverUrl+"stylesheets/bookmarklet.css"));
+    // display html
+    $("body").append(htmlTemplate);
   }
   
-  // HTML Template
-  var htmlTemplate = "<div id='huge-bookmarklet-template'>"+
-                       "<div id='huge-bookmarklet-template-lightbox'>"+
-                         "<div>"+
-                           "<textarea class='center'></textarea>"+
-                         "</div>"+
-                         "<a href='#' class='googleit' target=_blank><img src='"+serverUrl+"images/search.png' /></a>"+
-                       "</div>"+
-                     "</div>";
-
   $LAB
   .script("https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
   .wait(function(){
-    var el, str;
-    var $el = $("#huge-bookmarklet-template");
     $("#huge-bookmarklet-loader").fadeOut(200);
-    if ($el.length > 0) $el.remove();
-    else {
-      // load css
-      $("head").append($("<link>").attr("rel", "stylesheet").attr("href",serverUrl+"stylesheets/copy.css"));
-    }      
-    createBookmarklet();
-    $("#huge-bookmarklet-template-lightbox")
-      .live("click", function(){
-        $(this).hide();
-        $("#huge-bookmarklet-loader").remove();
-      })
-      .find(">*")
-      .live("click", function(e){e.stopPropagation();});
+    burn();
   });
 })();

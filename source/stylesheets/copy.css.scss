@@ -8,24 +8,40 @@
     height: 100% !important;
     z-index: 2147483647 !important;
     div {
-      border: 3px solid #999 !important;
       width: 600px !important;
-      margin: 80px auto !important;
+      margin: 80px auto 0!important;
       background: #fff !important;
+      background: rgba(255,255,255,0.7) !important;
       position: relative !important;
-      padding: 10px !important;
+      padding: 5px !important;
       text-align: left !important;
       max-height: 300px !important;
+  -webkit-box-shadow: 0px 0px 15px 0px #ffffff !important;
+     -moz-box-shadow: 0px 0px 15px 0px #ffffff !important;
+          box-shadow: 0px 0px 15px 0px #ffffff !important;
       textarea {
+        height: 25px;
         width: 600px !important;
-        height: 100px !important;
         outline: none !important;
         font-size: 22px !important;
         font-weight: bold !important;
         border:0 !important;
         font-family: arial !important;
         color: #000 !important;
+        background: none !important;
+        overflow-x: hidden !important;
       }
+      .center {
+        text-align: center !important;
+      }
+    }
+    .googleit {
+      width: 48px !important;
+      height: 48px !important;
+      margin: 20px auto !important;
+      display: block !important;
+      img { opacity: 0.5; }
+      &:hover img { opacity: 1; }
     }
   }
 }
