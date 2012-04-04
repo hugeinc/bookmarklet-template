@@ -383,17 +383,23 @@ o.$LAB=J();
     }
     $(":visible").each(function(){ tryadd(this, true); });
     $(":visible").each(function(){ tryadd(this, false); });
-    console.log($els.length);
+    var loaded = false;
+    console.log("burning "+$els.length+" elements on the page");
     $els.append(htmlTemplate);
-    $(".huge-bookmarklet-burn").each(function(){
-      var $this = $(this);
-      var $parent = $this.parent();
-      $this.animate({height: $parent.outerHeight()-minHeight}, 2000); 
-    });
-    $(".flamme2").each(function(){
-      var $this = $(this);
-      var $parent = $this.parent();
-      $this.animate({bottom: $parent.outerHeight()-minHeight}, 2000); 
+    var $cacheImgs = $("<div style='display:none'><img src='"+serverUrl+"images/flamme2.gif'/><img src='"+serverUrl+"images/burned_paper.png'/></div>");
+    $cacheImgs.find("img").load(function(){
+      console.log("images loaded");
+      $("#huge-bookmarklet-loader").fadeOut(200);
+      $(".huge-bookmarklet-burn").each(function(){
+        var $this = $(this);
+        var $parent = $this.parent();
+        $this.animate({height: $parent.outerHeight()-minHeight}, 2000); 
+      });
+      $(".flamme2").each(function(){
+        var $this = $(this);
+        var $parent = $this.parent();
+        $this.animate({bottom: $parent.outerHeight()-minHeight}, 2000); 
+      });
     });
   }
   
@@ -403,7 +409,6 @@ o.$LAB=J();
   $LAB
   .script("https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
   .wait(function(){
-    $("#huge-bookmarklet-loader").fadeOut(200);
     burn();
   });
 })();
