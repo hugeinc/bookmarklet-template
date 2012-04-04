@@ -6,7 +6,7 @@ This bookmarklet itself include the code to:
 +   display and style a loader on the top left of the page
 +   load bookmarklet.js
 
-What is bookmarklet.js then doing?
+**What is bookmarklet.js then doing?**
 
 bookmarklet.js includes LAB.js which takes care of loading jQuery and once loaded it builds a lightbox and setting some text inside.
 
