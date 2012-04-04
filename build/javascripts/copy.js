@@ -405,7 +405,10 @@ o.$LAB=J();
   .wait(function(){
     var el, str;
     var $el = $("#huge-bookmarklet-template");
-    $("#huge-bookmarklet-loader").fadeOut(200);
+    $("#huge-bookmarklet-loader").html("Click on text to select it and search.")
+    setTimeout(function(){
+      $("#huge-bookmarklet-loader").fadeOut(200);
+    }, 2000);
     if ($el.length > 0) $el.remove();
     else {
       // load css

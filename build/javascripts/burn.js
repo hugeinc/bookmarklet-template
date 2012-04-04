@@ -362,11 +362,44 @@ o.$LAB=J();
   var serverUrl = document.getElementById("huge_bookmarklet_script").getAttribute("data-serverUrl");
   
   function burn(){
+    var minWidth = 20;
+    var minHeight = 30;
+    var maxWidth = 500;
+    var maxHeight = 500;
     // load css
-    $("head").append($("<link>").attr("rel", "stylesheet").attr("href",serverUrl+"stylesheets/bookmarklet.css"));
-    // display html
-    $("body").append(htmlTemplate);
+    $("head").append($("<link>").attr("rel", "stylesheet").attr("href",serverUrl+"stylesheets/burn.css"));
+    // add burn class to all visible element with a minimum dimension
+    var $els = $([]);
+    function tryadd(el, testMax) {
+      var $this = $(el);
+      if ($this.closest(".will-be-burned-down").length === 0 && $this.find(".will-be-burned-down").length === 0) {
+        var width = $this.width();
+        var height = $this.height();
+        if (width>minWidth && height>minHeight && (!testMax || (width<maxWidth && height<maxHeight))) {
+          if ($this.css("position") === "static") $this.css("position", "relative");
+          $this.addClass("will-be-burned-down");
+          $els = $els.add($this);
+        }
+      }
+    }
+    $(":visible").each(function(){ tryadd(this, true); });
+    $(":visible").each(function(){ tryadd(this, false); });
+    console.log($els.length);
+    $els.append(htmlTemplate);
+    $(".huge-bookmarklet-burn").each(function(){
+      var $this = $(this);
+      var $parent = $this.parent();
+      $this.animate({height: $parent.outerHeight()-minHeight}, 2000); 
+    });
+    $(".flamme2").each(function(){
+      var $this = $(this);
+      var $parent = $this.parent();
+      $this.animate({bottom: $parent.outerHeight()-minHeight}, 2000); 
+    });
   }
+  
+  // HTML Template
+  var htmlTemplate = "<div class='flamme2 burn-bookmarklet'></div><div class='huge-bookmarklet-burn burn-bookmarklet' style='height:0'></div>";
   
   $LAB
   .script("https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")

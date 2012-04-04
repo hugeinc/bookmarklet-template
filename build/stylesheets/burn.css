@@ -1,0 +1,22 @@
+.burn-bookmarklet {
+  width: 100% !important;
+  position: absolute !important;
+  left: 0 !important;
+  z-index: 2147483647 !important; }
+
+.burn-bookmarklet.flamme1 {
+  bottom: 0;
+  background: url("../images/flamme1.gif") !important;
+  height: 92px; }
+
+.burn-bookmarklet.flamme2 {
+  bottom: 0;
+  margin-bottom: -5px;
+  background: url("../images/flamme2.gif") !important;
+  height: 50px; }
+
+.burn-bookmarklet.huge-bookmarklet-burn {
+  bottom: 0 !important;
+  background: url("../images/burned_paper.png") !important;
+  opacity: 0.7 !important;
+  padding: 0 !important; }
