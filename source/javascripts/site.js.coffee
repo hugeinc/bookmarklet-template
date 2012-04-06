@@ -1,6 +1,6 @@
 $(document).ready ->
   path = location.href.replace(/\/$/, "")
-  $(".bookmarklet").each ->
+  $(".bookmarklet[data-name]").each ->
     $this = $ this
     name = $this.attr "data-name"
     $this.attr("href", """
